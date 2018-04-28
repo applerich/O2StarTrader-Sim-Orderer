@@ -23,7 +23,6 @@ for (var i = 0; i < config.tasks; i++) {
 }
 
 function createAccountandOrderSim(emailParam, mobileNumberParam) {
-
 	request.get({
 			headers: {
 				'user-agent': userAgent
