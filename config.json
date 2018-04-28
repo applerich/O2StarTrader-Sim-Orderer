@@ -1,0 +1,14 @@
+{
+	"_comment": "addressline1 must be laid out using this format: Post Code, House Number, Road Name, City Example below",
+	"_comment2": "BS15 4HQ, 18, Honey Hill Road, Bristol",
+	"_comment3": "To be accurate, send a GET request here https://www.o2startrader.co.uk/findAddress?postcode= here with your post code at the end",
+	"_comment4": "With the headers x-requested-with: XMLHttpRequest",
+	"tasks": "2",
+	"firstName": "John",
+	"lastName": "Doe",
+	"emailPrefix": "johndoe",
+	"emailDomain": "gmail.com",
+	"accountPassword": "Password123",
+	"postcode": "BS15 4HQ",
+	"addressline1": "BS15 4HQ, 18, Honey Hill Road, Bristol"
+}
