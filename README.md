@@ -1,7 +1,8 @@
 # O2StarTrader-Sim-Orderer
 Used to order 20 free sims multiple times from https://www.o2startrader.co.uk/ using HTTP Requests. Coded in Node JS
 
-O2StarTrader is a platform in which you can create an account and order 20 free sims. Once you distribute these sims, you will get affiliate money each time someone top's up the sim you've received. This code allows you to order multiple sims with ease and manage/save accounts that are created.
+O2StarTrader is a platform in which you can create an account and order 20 free sims. Once you distribute these sims, you will get affiliate money each time someone top's up the sim you've received. This code allows you to order multiple sims with ease and manage/save accounts that are created. These sims can also be used for other purposes, in general a way to order mass amounts of sim's easilly. 1 task = 20 sims.
+
 **Usage**
 
 1. Input your details in 'config.json'
