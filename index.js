@@ -31,7 +31,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 		},
 		function (error, response, body) {
 			if (response.statusCode == 200) {
-				console.log("Step 1 successful");
+				console.log("Found registration page");
 				request({
 					url: 'https://www.o2startrader.co.uk/register',
 					method: 'post',
@@ -60,7 +60,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 					},
 				}, function (error, response, body) {
 					if (response.statusCode == 200) {
-						console.log("Step 2 successful");
+						console.log("Posted registration details");
 						request({
 							url: 'https://www.o2startrader.co.uk/register',
 							method: 'post',
@@ -89,7 +89,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 							},
 						}, function (error, response, body) {
 							if (response.statusCode == 200) {
-								console.log("Step 3 successful");
+								console.log("Posted post code");
 								request({
 									url: 'https://www.o2startrader.co.uk/register',
 									method: 'post',
@@ -119,7 +119,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 									},
 								}, function (error, response, body) {
 									if (response.statusCode == 200) {
-										console.log("Step 4 successful");
+										console.log("Posted address info");
 										request.get({
 												headers: {
 													'user-agent': userAgent,
@@ -129,7 +129,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 											},
 											function (error, response, body) {
 												if (response.statusCode == 200) {
-													console.log("Step 5 successful");
+													console.log("User account has been verified");
 													request.get({
 															headers: {
 																'user-agent': userAgent,
@@ -139,7 +139,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 														},
 														function (error, response, body) {
 															if (response.statusCode == 200) {
-																console.log("Step 6 successful");
+																console.log("User has logged in");
 																request.get({
 																		headers: {
 																			'user-agent': userAgent,
@@ -148,7 +148,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																	},
 																	function (error, response, body) {
 																		if (response.statusCode == 200) {
-																			console.log("Step 7 successful");
+																			console.log("Found order page");
 																			request({
 																				url: 'https://www.o2startrader.co.uk/account/updateBasketItems',
 																				method: 'post',
@@ -161,7 +161,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																				},
 																			}, function (error, response, body) {
 																				if (response.statusCode == 200) {
-																					console.log("Step 8 successful");
+																					console.log("Added sim's to cart");
 																					request.get({
 																							headers: {
 																								'user-agent': userAgent,
@@ -173,7 +173,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																								$ = cheerio.load(body);
 																								addressID = $('#Order_addressId').attr('value');
 																								console.log("Address ID: " + addressID);
-																								console.log("Step 9 successful");
+																								console.log("Found address information");
 																								request({
 																									url: 'https://www.o2startrader.co.uk/account/checkout',
 																									method: 'post',
@@ -188,7 +188,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																									},
 																								}, function (error, response, body) {
 																									if (response.statusCode == 200) {
-																										console.log("Step 10 successful");
+																										console.log("Posted adress information for checkout");
 																										request({
 																											url: 'https://www.o2startrader.co.uk/account/checkout',
 																											method: 'post',
@@ -203,8 +203,8 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																											},
 																										}, function (error, response, body) {
 																											if (response.statusCode == 200) {
-																												console.log("Step 11 successful. 20 Sim's ordered. \nAccount saved to accounts.txt");
-																												fs.appendFile('accounts.txt', "Successful account. Sim ordered: " + email + ":" + password + "\r\n", function (err) {
+																												console.log("Completed order. 20 Sim's ordered. \nAccount saved to accounts.txt");
+																												fs.appendFile('accounts.txt', "Successful account. Sim ordered: " + emailParam + ":" + password + "\r\n", function (err) {
 																													if (err) throw err;
 																												});
 																											} else {
@@ -218,7 +218,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																										console.log("Error! Account saved to accounts.txt");
 																										console.log("Status: " + response.statusCode);
 																										console.log("Body: " + body);
-																										fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+																										fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 																											if (err) throw err;
 																										});
 																										return;
@@ -228,7 +228,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																								console.log("Error! Account saved to accounts.txt");
 																								console.log("Status: " + response.statusCode);
 																								console.log("Body: " + body);
-																								fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+																								fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 																									if (err) throw err;
 																								});
 																								return;
@@ -238,7 +238,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																					console.log("Error! Account saved to accounts.txt");
 																					console.log("Status: " + response.statusCode);
 																					console.log("Body: " + body);
-																					fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+																					fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 																						if (err) throw err;
 																					});
 																					return;
@@ -248,7 +248,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																			console.log("Error! Account saved to accounts.txt");
 																			console.log("Status: " + response.statusCode);
 																			console.log("Body: " + body);
-																			fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+																			fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 																				if (err) throw err;
 																			});
 																			return;
@@ -258,7 +258,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 																console.log("Error! Account saved to accounts.txt");
 																console.log("Status: " + response.statusCode);
 																console.log("Body: " + body);
-																fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+																fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 																	if (err) throw err;
 																});
 																return;
@@ -268,7 +268,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 													console.log("Error! Account saved to accounts.txt");
 													console.log("Status: " + response.statusCode);
 													console.log("Body: " + body);
-													fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+													fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 														if (err) throw err;
 													});
 													return;
@@ -278,7 +278,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 										console.log("Error! Account saved to accounts.txt");
 										console.log("Status: " + response.statusCode);
 										console.log("Body: " + body);
-										fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+										fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 											if (err) throw err;
 										});
 										return;
@@ -288,7 +288,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 								console.log("Error! Account saved to accounts.txt");
 								console.log("Status: " + response.statusCode);
 								console.log("Body: " + body);
-								fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+								fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 									if (err) throw err;
 								});
 								return;
@@ -298,7 +298,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 						console.log("Error! Account saved to accounts.txt");
 						console.log("Status: " + response.statusCode);
 						console.log("Body: " + body);
-						fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+						fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 							if (err) throw err;
 						});
 						return;
@@ -308,7 +308,7 @@ function createAccountandOrderSim(emailParam, mobileNumberParam) {
 				console.log("Error! Account saved to accounts.txt");
 				console.log("Status: " + response.statusCode);
 				console.log("Body: " + body);
-				fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + email + ":" + password + "\r\n", function (err) {
+				fs.appendFile('accounts.txt', "Error Account (Try manually order Sim): " + emailParam + ":" + password + "\r\n", function (err) {
 					if (err) throw err;
 				});
 				return;
