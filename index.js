@@ -1,8 +1,5 @@
 var jar = require('request').jar();
-var request = require('request').defaults({
-	timeout: 10000,
-	jar: jar,
-});
+var request = require('request').defaults({ jar: jar });
 var fs = require('fs');
 var userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36';
 var cheerio = require('cheerio');
